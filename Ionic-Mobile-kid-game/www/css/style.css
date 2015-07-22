@@ -1,0 +1,16 @@
+ Empty. Add your own CSS if you like */
+.show-item {
+  margin-top:20%;
+  font-size: 150pt;
+  text-align: center;
+}
+.items-slider {
+  height:100%;
+  width: 100%;
+  font-size: 150pt;
+  text-align: center;
+}
+.items-slider > a {
+  text-decoration: none;
+}
+.scroll{height: 100%;}

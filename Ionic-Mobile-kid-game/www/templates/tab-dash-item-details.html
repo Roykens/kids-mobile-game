@@ -1,0 +1,15 @@
+<ion-view view-title="{{menu.name}}">
+  <ion-content>
+      <ion-slide-box class="items-slider"  on-slide-changed="slideHasChanged($index)"  show-pager="false">
+        <ion-slide ng-if="active_tab.menu == 'numbers' && active_tab.item == 'counting' " ng-repeat="n in range(0,limit_number)" style="margin-top: 150px" ng-style=" n >= 100 ? {'font-size': '100pt'} : {'font-size': '150pt'}">
+          {{n}}
+        </ion-slide>
+        <ion-slide ng-if="active_tab.menu == 'alphabet' && active_tab.item == 'reading' " ng-repeat="alphabet in alphabets" style="margin-top: 150px" ng-style=" n >= 100 ? {'font-size': '100pt'} : {'font-size': '150pt'}">
+          {{alphabet}}
+        </ion-slide>
+        <ion-slide ng-if="active_tab.menu == 'numbers' && active_tab.item == 'random' "  ng-repeat="random in randoms" style="margin-top: 150px" on-swipe-left="cardSwipedLeft()" on-swipe-right="cardSwipedRight()" ng-style=" n >= 100 ? {'font-size': '100pt'} : {'font-size': '150pt'}">
+          {{random}}
+        </ion-slide>
+      </ion-slide-box>
+  </ion-content>
+</ion-view>

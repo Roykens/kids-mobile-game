@@ -1,0 +1,12 @@
+<ion-view view-title="{{menu.name}}">
+  <ion-content>
+    <div class="list list-inset">
+    <ion-list class="list list-inset">
+      <ion-item class="item-icon-right" ng-repeat="menu_item in menu_items" href="#/tab/dash/{{menu.code}}/{{menu_item.code}}">
+        {{menu_item.name}}
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+    </div>
+  </ion-content>
+</ion-view>

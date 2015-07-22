@@ -1,0 +1,12 @@
+[
+  {
+    "id" : 0,
+    "name" : "0 1 2 3 4 5 6 ...",
+    "code" : "numbers"
+  },
+  {
+    "id" : 1,
+    "name" : "A B C D E F G ...",
+    "code" : "alphabet"
+  }
+]

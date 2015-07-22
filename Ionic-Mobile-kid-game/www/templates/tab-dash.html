@@ -1,0 +1,12 @@
+<ion-view view-title="Kids Education">
+  <ion-content>
+    <div class="list list-inset">
+    <ion-list class="list list-inset">
+      <ion-item class="item-icon-right" ng-repeat="menu in menu_lists" href="#/tab/dash/{{menu.code}}">
+        {{menu.name}}
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+    </div>
+  </ion-content>
+</ion-view>
