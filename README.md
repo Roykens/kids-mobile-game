@@ -24,6 +24,7 @@ To install this project on your local development environment you will need:
 ### For Ionic
 
 * Run command: npm install
+* Install plugin: ionic state restore
 * Start server: ionic serve
 * Add platform ios: cordova platform add ios or ionic platform add ios
 * Add platform android: cordova platform add android / ionic platform add android
