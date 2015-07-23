@@ -6,10 +6,14 @@ angular.module('kid_game.controllers', [])
 
 
 .controller('MenuItemCtrl',function($scope, MenuItems, Menu,$stateParams){
-  var menu = Menu.get($stateParams.menuCode);
+  var code = $stateParams.menuCode;
+  var menu = Menu.get(code);
   var menu_items = MenuItems.all(menu.id);
   $scope.menu = menu;
   $scope.menu_items = menu_items;
+  if(code == 'camera'){
+
+  }
 })
 
 .controller('MenuItemDetailCtrl',function($scope, Menu, $stateParams, $ionicSlideBoxDelegate){
@@ -63,6 +67,30 @@ angular.module('kid_game.controllers', [])
     return input;
   }
 
+})
+
+.controller('CameraCtrl', function($ionicPlatform, $rootScope, $scope, $cordovaCamera){
+
+  $scope.takePicture = function() {
+    var options = {
+        quality : 75,
+        destinationType : Camera.DestinationType.DATA_URL,
+        sourceType : Camera.PictureSourceType.CAMERA,
+        allowEdit : false,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 320,
+        targetHeight: 300,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: false,
+        cameraDirection: 1
+    };
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+      var image = document.getElementById('myImg');
+      image.src = "data:image/jpeg;base64," + imageData;
+    }, function(err) {
+      alert("Error to take a photo");
+    });
+  }
 })
 
 .controller('AccountCtrl',function($scope){

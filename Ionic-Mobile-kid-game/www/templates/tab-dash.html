@@ -1,12 +1,23 @@
 <ion-view view-title="Kids Education">
   <ion-content>
     <div class="list list-inset">
-    <ion-list class="list list-inset">
-      <ion-item class="item-icon-right" ng-repeat="menu in menu_lists" href="#/tab/dash/{{menu.code}}">
-        {{menu.name}}
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
-    </ion-list>
+      <ion-list class="list list-inset">
+        <ion-item class="item-icon-right" ng-repeat="menu in menu_lists" href="#/tab/dash/{{menu.code}}">
+          {{menu.name}}
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+      </ion-list>
+      <div ng-controller="CameraCtrl">
+        <ion-list>
+          <ion-item class="item-icon-right" ng-click="takePicture()">
+            Take a photo
+            <i class="icon ion-chevron-right icon-accessory"></i>
+          </ion-item>
+        </ion-list>
+        <div class="photo-capture">
+          <img src="" alt="" id="myImg">
+        </div>
+      </div>
     </div>
   </ion-content>
 </ion-view>
