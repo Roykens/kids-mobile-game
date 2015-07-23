@@ -1,6 +1,5 @@
 var services = angular.module('kid_game.services', [])
-var menu_lists = [
-      {
+var menu_lists = [{
         "id" : 0,
         "name" : "0 1 2 3 4 5 6 ...",
         "code" : "numbers"
@@ -9,8 +8,7 @@ var menu_lists = [
         "id" : 1,
         "name" : "A B C D E F G ...",
         "code" : "alphabet"
-      }
-    ];
+      }];
 
   var menu_items =  [{
         "id" : 0,
@@ -60,22 +58,6 @@ services.factory('MenuItems',function($filter){
         }
       }
       return null;
-    },
-    getSubItem: function(main_item_id){
-      var item = []
-      for (var i = 0; i < sub_menu_items.length; i++) {
-        if (sub_menu_items[i].menu_item_id === main_item_id) {
-          item.push(sub_menu_items[i])
-        }
-      }
-      return item;
-    },
-    startPlay: function(max_number) {
-      var item = [];
-      for(var i = 0;i<= max_number; i++){
-        item.push(i)
-      }
-      return item;
     }
   };
 });
@@ -94,22 +76,22 @@ services.factory('MenuItemDetail',function($filter){
         }
       }
       return null;
-    },
-    getSubItem: function(main_item_id){
-      var item = []
-      for (var i = 0; i < sub_menu_items.length; i++) {
-        if (sub_menu_items[i].menu_item_id === main_item_id) {
-          item.push(sub_menu_items[i])
-        }
-      }
-      return item;
-    },
-    startPlay: function(max_number) {
-      var item = [];
-      for(var i = 0;i<= max_number; i++){
-        item.push(i)
-      }
-      return item;
     }
   };
 });
+
+services.factory('Camera', ['$q', function($q) {
+
+  return {
+    getPicture: function(options) {
+      var q = $q.defer();
+
+      navigator.camera.getPicture(function(result) {
+        q.resolve(result);
+      }, function(err) {
+        q.reject(err);
+      }, options);
+      return q.promise;
+    }
+  }
+}]);

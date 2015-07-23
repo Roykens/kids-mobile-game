@@ -1,7 +1,8 @@
 configs= angular.module("configs")
-configs.config(function($stateProvider, $urlRouterProvider) {
+configs.config(function($stateProvider, $urlRouterProvider,$compileProvider) {
 
- $stateProvider
+  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+  $stateProvider
 
     .state('tab', {
     url: '/tab',
@@ -39,6 +40,16 @@ configs.config(function($stateProvider, $urlRouterProvider) {
     }
   })
 
+  .state('tab.dash-camera', {
+    url: '/dash/camera',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/tab-dash-camera.html',
+        controller: 'CameraCtrl'
+      }
+    }
+  })
+
   .state('tab.account', {
     url: '/account',
     views: {
@@ -47,7 +58,8 @@ configs.config(function($stateProvider, $urlRouterProvider) {
         controller: 'AccountCtrl'
       }
     }
-  });
+  })
+
 
   $urlRouterProvider.otherwise('/tab/dash');
 
