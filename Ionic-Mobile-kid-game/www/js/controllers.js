@@ -17,15 +17,17 @@ angular.module('kid_game.controllers', [])
   var age = localStorage.getItem("age") != null ? parseInt(localStorage.getItem("age")) : 3;
   var min_number = 60;
   var numbers = age > 3 ? min_number * age : min_number ;
-  var minNumber = min_number;
+  var minNumber = min_number/3;
   var menu = Menu.get($stateParams.menuCode);
   $scope.menu = menu;
   $scope.active_tab = {
     menu: $stateParams.menuCode,
     item: $stateParams.menuDetail
   };
-  $scope.number_lists = rangs(0,minNumber)
+  $scope.number_lists = rangs(0,minNumber,1,'number')
   $scope.alphabets = alphabet;
+  $scope.number_readings = rangs(0,minNumber,1,'number_readings')
+
   $scope.next = function() {
     $ionicSlideBoxDelegate.next();
   };
@@ -34,24 +36,31 @@ angular.module('kid_game.controllers', [])
   };
 
   $scope.cardSwipedLeft = function(index) {
+    var menu_item_code = $stateParams.menuDetail;
     if(index == minNumber -1 && minNumber <= numbers){
-      minNumber = minNumber * 2;
-      new_number = numbers > minNumber ? minNumber : numbers;
-      $scope.number_lists = rangs(0,new_number)
-      $ionicSlideBoxDelegate.update();
+        minNumber = minNumber * 3;
+        new_number = numbers > minNumber ? minNumber : numbers;
+        if(menu_item_code == 'counting'){
+          $scope.number_lists = rangs(0,new_number,1,'number')
+        } else if(menu_item_code == 'reading'){
+          $scope.number_readings = rangs(0,new_number,1,'number_readings')
+        }
+        $ionicSlideBoxDelegate.update();
     }
   }
 
-  function rangs(min, max, step){
+  function rangs(min, max, step,type){
     step = step || 1;
     var input = [];
-    for (var i = min; i <= max; i += step) input.push(i);
+    if(type != 'number_readings'){
+      for (var i = min; i <= max; i += step) input.push(i);
+    } else {
+      for (var i = min; i <= max; i += step) {
+        if(i == 0) input.push("Zero")
+        input.push(num2word(i));
+      }
+    }
     return input;
-  }
-
-  $scope.random = ['0','A'];
-  $scope.addRandom = function(){
-    $scope.random.push(Math.floor((Math.random()* numbers)+1));
   }
 
 })

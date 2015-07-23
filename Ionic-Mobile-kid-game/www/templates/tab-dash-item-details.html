@@ -4,6 +4,9 @@
       <ion-slide ng-if="active_tab.menu == 'numbers' && active_tab.item == 'counting' " ng-repeat="number in number_lists" style="margin-top: 150px" ng-style=" n >= 100 ? {'font-size': '100pt'} : {'font-size': '150pt'}" on-swipe-left="cardSwipedLeft(number)">
         {{number}}
       </ion-slide>
+      <ion-slide ng-if="active_tab.menu == 'numbers' && active_tab.item == 'reading' " ng-repeat="reading in number_readings" style="margin-top: 150px" ng-style=" reading.length >= 8 ? {'font-size': '35pt'} : {'font-size': '60pt'}" on-swipe-left="cardSwipedLeft($index)">
+        {{reading}}
+      </ion-slide>
       <ion-slide ng-if="active_tab.menu == 'alphabet' && active_tab.item == 'reading' " ng-repeat="alphabet in alphabets" style="margin-top: 150px" ng-style=" n >= 100 ? {'font-size': '100pt'} : {'font-size': '150pt'}">
         {{alphabet}}
       </ion-slide>
