@@ -1,7 +1,6 @@
 configs= angular.module("configs")
-configs.config(function($stateProvider, $urlRouterProvider,$compileProvider) {
+configs.config(function($stateProvider, $urlRouterProvider) {
 
-  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
   $stateProvider
 
     .state('tab', {
