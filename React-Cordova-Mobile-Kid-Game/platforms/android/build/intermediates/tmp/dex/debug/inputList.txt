@@ -1,0 +1,2 @@
+/Users/bunhouth/Desktop/client/NewGame/Mobile-Kid-Game/platforms/android/build/intermediates/classes/debug
+/Users/bunhouth/Desktop/client/NewGame/Mobile-Kid-Game/platforms/android/build/intermediates/pre-dexed/debug/classes-1026d8848a4f67370369c6bb6b8ce91e3e119b86.jar
