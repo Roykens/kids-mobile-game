@@ -8,6 +8,8 @@ var menuList = [{
   code: "alphabets"
 }];
 
+var alphabet = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ];
+
 menuService = (function () {
   var findByParentId= function(){
 
@@ -31,7 +33,8 @@ menuService = (function () {
     return deferred.promise();
   },
   subMenuList = [{id: 0, name: "Counting",code: "counting",parent_code: "numbers"},
-                 {id: 1, name: "Reading", code: "reading", parent_code: "numbers"}];
+                 {id: 1, name: "Reading", code: "reading", parent_code: "numbers"},
+                 {id: 2, name: "Reading", code: "reading", parent_code: "alphabets"}];
   return{
     findByParentId: findByParentId,
     findByParentCode: findByParentCode,

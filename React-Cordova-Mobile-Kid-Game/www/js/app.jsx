@@ -118,23 +118,37 @@ var SubMenuList = React.createClass({
 var SubMenuDetail = React.createClass({
   getInitialState: function(){
     return{
-      text: 0
+      text: 0,
+      word: ""
     }
+  },
+  componentDidMount: function(){
+    var menu_parent_code = this.props.params.menuCode ;
+    var sub_menu_code = this.props.params.subMenuCode;
+    var s = this.state;
+    menu_parent_code == 'alphabets' && sub_menu_code == 'reading' ? this.setState({word: alphabet[s.text]}) : ""
   },
   handleLeftSwipe: function(e){
     var age = localStorage.getItem("age") != null ? parseInt(localStorage.getItem("age")) : 3;
-    var min_number = 15;
+    var min_number = 60;
     var numbers = age > 3 ? min_number * age : min_number ;
     var s = this.state;
+    var menu_parent_code = this.props.params.menuCode ;
+    var sub_menu_code = this.props.params.subMenuCode;
     this.setState({text: numbers == s.text ? numbers : s.text + 1})
+    menu_parent_code == 'alphabets' && sub_menu_code == 'reading' ?  this.setState({word: alphabet[s.text >= 25 ? 25 : s.text + 1]}) : ""
   },
   handleRightSwipe: function(e){
     var s = this.state;
-    this.setState({text: s.text == 0 ? 0 : s.text - 1})
+    var menu_parent_code = this.props.params.menuCode ;
+    var sub_menu_code = this.props.params.subMenuCode;
+    menu_parent_code == 'numbers' && sub_menu_code == 'counting' ? this.setState({text: s.text == 0 ? 0 : s.text - 1}) : ""
+    menu_parent_code == 'alphabets' && sub_menu_code == 'reading' ?  this.setState({text: s.text == 0 ? 0 : (s.text >= 25 ? 24 : s.text -1 ),word: alphabet[s.text == 0 ? 0 : (s.text >= 25 ? 24 : s.text -1 )]}) : ""
   },
   render: function(){
     var s = this.state;
     var menu_parent_code = this.props.params.menuCode ;
+    var sub_menu_code = this.props.params.subMenuCode;
     var parent_menu = [];
     menuService.findParentData(menu_parent_code).done( function(item){
       parent_menu = item;
@@ -142,8 +156,10 @@ var SubMenuDetail = React.createClass({
     return(
       <div>
         <Header text={parent_menu[0].name} back={true}/>
-        <Swiper className="swipe-container swipe-view" onSwipeLeft={this.handleLeftSwipe} onSwipeRight={this.handleRightSwipe}>
-          {s.text}
+        <Swiper className="swipe-container" onSwipeLeft={this.handleLeftSwipe} onSwipeRight={this.handleRightSwipe}>
+          <div className="swipe-view" style={{"fontSize": s.text > 99 ? "100pt" : "200pt"}}>
+            { sub_menu_code == 'counting' ? s.text : (menu_parent_code == 'alphabets' && sub_menu_code == 'reading' ? s.word : '')}
+          </div>
         </Swiper>
         <Footer />
       </div>
@@ -172,7 +188,7 @@ var App = React.createClass({
         <div className="content clear">
           <MenuList menuList={menuList}/>
           <div className={"capture-image " + (s.is_capture ? "" : "hidden")}>
-            <img src="" id="myImage" alt="No Image" />
+            <img src="" id="myImage" alt="No Image" width="310px" height="300px"/>
           </div>
         </div>
         <Footer />
