@@ -5,6 +5,9 @@
     margin-top: 80px;
     text-align: center;
 }
+.pointer-cursor {
+    cursor: pointer;
+}
 .capture-image {
     margin-left: 20px;
     margin-top: 20px;

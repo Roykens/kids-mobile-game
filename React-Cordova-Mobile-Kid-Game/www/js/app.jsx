@@ -3,6 +3,7 @@ var Route = Router.Route;
 var NotFoundRoute = Router.NotFoundRoute;
 var Link = ReactRouter.Link;
 var Header = React.createClass({
+  mixins: [Router.Navigation],
   onCameraHandler: function(e){
     if(navigator.camera != undefined){
       navigator.camera.getPicture(this.onSuccess, this.onFail, { quality : 75,
@@ -26,11 +27,14 @@ var Header = React.createClass({
   onFail: function(message){
     alert('Failed because: ' + message);
   },
+  navigateBack: function(){
+    this.goBack();
+  },
   render: function(){
     var p = this.props;
     return(
       <header className="bar bar-nav">
-        <a href="#" className={"icon icon-left-nav pull-left" + (p.back ? "":" hidden")}></a>
+        <a className={"icon icon-left-nav pull-left pointer-cursor" + (p.back ? "":" hidden")} onClick={this.navigateBack}></a>
         <h1 className="title">{p.text}</h1>
         <button className={"btn pull-right" + (p.back ? " hidden" : "" )} onClick={this.onCameraHandler}>
           <i className="fa fa-camera-retro fa-lg"></i>
@@ -241,7 +245,7 @@ var NotFound = React.createClass({
 })
 
 var routes = (
-    <Route>
+    <Route history={Router.BrowserHistory}>
       <Route path="/" handler={App} name="home"/>
       <Route path="/games/:menuCode" handler={SubMenuList}/>
       <Route path="/games/:menuCode/:subMenuCode" handler={SubMenuDetail}/>
@@ -250,7 +254,7 @@ var routes = (
     </Route>
   );
 
-Router.run(routes, function(Handler){
+Router.run(routes, Router.HistoryLocation,function(Handler){
   React.render(<Handler />, document.getElementById("app"))
 })
 
