@@ -7,6 +7,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    bubble-wrap (1.9.2)
     claide (0.9.1)
     colored (1.2)
     i18n (0.7.0)
@@ -31,6 +32,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bubble-wrap
   ib
   rake
 
