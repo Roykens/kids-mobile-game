@@ -14,6 +14,8 @@ To install this project on your local development environment you will need:
 * Install Plugin cordova: cordova plugin add <plugin-package-name>
 * Install Plugin ionic: ionic plugin add <plugin-package-name>
 
+[More Detail here](https://github.com/rotati/wiki/wiki/Getting-Start-Mobile-Hybrid-App-with-Ionic)
+
 ### For Reapp
 
 * Install reapp (run this command: npm install -g reapp)
