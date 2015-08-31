@@ -21,7 +21,8 @@ To install this project on your local development environment you will need:
 * Install reapp (run this command: npm install -g reapp)
 
 ### For RubyMotion
-[Read Here](https://github.com/rotati/wiki/wiki/Getting-Started-Mobile-Hybrid-App-with-RubyMotion)
+[Installing RubyMotion](https://github.com/rotati/wiki/wiki/Getting-Started-Mobile-Hybrid-App-with-RubyMotion)
+
 ### How to run this project?
 
 ### For Ionic
